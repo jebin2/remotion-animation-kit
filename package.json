@@ -4,7 +4,10 @@
   "description": "Shared Remotion animation components, transitions and kinetic subtitles for ReelForge and PanelFlow",
   "main": "src/index.ts",
   "types": "src/index.ts",
-  "files": ["src"],
+  "files": ["src", "assets", "assets-manifest.json", "postinstall.js"],
+  "scripts": {
+    "postinstall": "node postinstall.js"
+  },
   "peerDependencies": {
     "react": ">=18",
     "remotion": ">=4",

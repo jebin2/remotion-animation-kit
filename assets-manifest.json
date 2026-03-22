@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "baseUrl": "https://raw.githubusercontent.com/jebin2/remotion-animation-kit/main",
+  "assets": [
+    { "src": "assets/fonts/Bungee-Regular.ttf", "dest": "public/fonts/Bungee-Regular.ttf" },
+    { "src": "assets/sfx/sfx_boing.mp3",        "dest": "public/sfx/sfx_boing.mp3" },
+    { "src": "assets/sfx/sfx_boxing.mp3",       "dest": "public/sfx/sfx_boxing.mp3" },
+    { "src": "assets/sfx/sfx_breath.mp3",       "dest": "public/sfx/sfx_breath.mp3" },
+    { "src": "assets/sfx/sfx_flash.mp3",        "dest": "public/sfx/sfx_flash.mp3" },
+    { "src": "assets/sfx/sfx_foliage.mp3",      "dest": "public/sfx/sfx_foliage.mp3" },
+    { "src": "assets/sfx/sfx_heartbeat.mp3",    "dest": "public/sfx/sfx_heartbeat.mp3" },
+    { "src": "assets/sfx/sfx_impact.mp3",       "dest": "public/sfx/sfx_impact.mp3" },
+    { "src": "assets/sfx/sfx_page_flip.mp3",    "dest": "public/sfx/sfx_page_flip.mp3" },
+    { "src": "assets/sfx/sfx_page_turn2.mp3",   "dest": "public/sfx/sfx_page_turn2.mp3" },
+    { "src": "assets/sfx/sfx_paper_slide.mp3",  "dest": "public/sfx/sfx_paper_slide.mp3" },
+    { "src": "assets/sfx/sfx_pop.mp3",          "dest": "public/sfx/sfx_pop.mp3" },
+    { "src": "assets/sfx/sfx_punchcrack.mp3",   "dest": "public/sfx/sfx_punchcrack.mp3" },
+    { "src": "assets/sfx/sfx_rumble.mp3",       "dest": "public/sfx/sfx_rumble.mp3" },
+    { "src": "assets/sfx/sfx_sandbag.mp3",      "dest": "public/sfx/sfx_sandbag.mp3" },
+    { "src": "assets/sfx/sfx_slap.mp3",         "dest": "public/sfx/sfx_slap.mp3" },
+    { "src": "assets/sfx/sfx_whip.mp3",         "dest": "public/sfx/sfx_whip.mp3" },
+    { "src": "assets/sfx/sfx_whoosh.mp3",       "dest": "public/sfx/sfx_whoosh.mp3" }
+  ]
+}

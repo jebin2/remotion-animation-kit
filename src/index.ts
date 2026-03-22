@@ -4,3 +4,6 @@ export type { BaseAnimationProps } from "./animations";
 export { getAnimationProps } from "./animations";
 export { AnimatedBase } from "./AnimatedBase";
 export { KineticSubtitles } from "./KineticSubtitles";
+export { ProgressBar } from "./ProgressBar";
+export { ThreePartBuildUp } from "./ThreePartBuildUp";
+export type { BuildUpData } from "./ThreePartBuildUp";
