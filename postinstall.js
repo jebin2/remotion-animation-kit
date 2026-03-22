@@ -12,16 +12,19 @@ const https = require("https");
 const fs    = require("fs");
 const path  = require("path");
 
-// When installed as a dependency, __dirname is inside node_modules/remotion-animation-kit.
-// process.cwd() is the project root (where npm install was run).
-// Guard: don't run when developing the kit itself.
+// When npm runs postinstall for a dependency, process.cwd() is the *package*
+// directory (node_modules/remotion-animation-kit/), NOT the project root.
+// We derive the project root by walking two levels up from __dirname:
+//   __dirname = <project>/node_modules/remotion-animation-kit
+//   projectRoot = <project>
+// Guard: skip when developing the kit itself (not inside node_modules).
 const isInstalledAsDep = __dirname.includes("node_modules");
 if (!isInstalledAsDep) {
   console.log("[remotion-animation-kit] postinstall: skipping (running in kit dev mode).");
   process.exit(0);
 }
 
-const projectRoot  = process.cwd();
+const projectRoot  = path.resolve(__dirname, "../..");
 const manifestPath = path.join(__dirname, "assets-manifest.json");
 const manifest     = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
 
