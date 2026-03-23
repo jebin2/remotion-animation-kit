@@ -4,7 +4,7 @@ import {
   Audio,
   Img,
   Sequence,
-  Video,
+  OffthreadVideo,
   interpolate,
   spring,
   staticFile,
@@ -91,10 +91,9 @@ export const TitleCard: React.FC<Props> = ({ title, media }) => {
 
       {/* Rapid montage — cycle through clips (video) or panels (image) */}
       {montageItem?.videoSrc ? (
-        <Video
+        <OffthreadVideo
           src={staticFile(montageItem.videoSrc)}
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          startFrom={0}
           muted
         />
       ) : montageItem?.imageSrc ? (
