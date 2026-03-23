@@ -7,3 +7,5 @@ export { KineticSubtitles } from "./KineticSubtitles";
 export { ProgressBar } from "./ProgressBar";
 export { ThreePartBuildUp } from "./ThreePartBuildUp";
 export type { BuildUpData } from "./ThreePartBuildUp";
+export { TitleCard } from "./TitleCard";
+export type { TitleCardMedia } from "./TitleCard";
