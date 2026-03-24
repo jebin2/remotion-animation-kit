@@ -24,6 +24,10 @@ interface Props {
 
 const FLASH_FRAMES = 3;
 
+// Total duration of the TitleCard at a given fps
+export const getTitleCardDuration = (fps: number) =>
+  Math.round(0.548 * fps) + Math.round(0.7 * fps) + 8;
+
 export const TitleCard: React.FC<Props> = ({ title, media }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
