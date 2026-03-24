@@ -65,7 +65,7 @@ export const TitleCard: React.FC<Props> = ({ title, media }) => {
   });
 
   // ── Rumble slowly rises then fades out when title slams ─────────────────
-  const rumbleVolume = interpolate(frame, [0, 25, 32], [0, 0.85, 0], {
+  const rumbleVolume = interpolate(frame, [0, 25, 32], [0.5, 1.5, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
