@@ -67,8 +67,9 @@ export const TitleCard: React.FC<Props> = ({ title, media }) => {
     extrapolateRight: "clamp",
   });
 
-  // ── Rumble slowly rises then fades out when title slams ─────────────────
-  const rumbleVolume = interpolate(frame, [0, SLAM_FRAME - 5, SLAM_FRAME + 2], [2.5, 4.5, 0], {
+  // ── Rumble builds into BAM, then fades out over the rest of the 1.1s clip ─
+  const audioEndFrame = Math.round(1.1 * fps);
+  const rumbleVolume = interpolate(frame, [0, SLAM_FRAME, audioEndFrame], [2.5, 4.5, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
