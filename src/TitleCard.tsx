@@ -171,7 +171,7 @@ export const TitleCard: React.FC<Props> = ({ title, media }) => {
       </AbsoluteFill>
 
       {/* Rumble loop — builds tension during montage, fades out at slam */}
-      <Audio src={staticFile("sfx/sfx_rumble.mp3")} loop volume={rumbleVolume} />
+      <Audio src={staticFile("sfx/dragon-studio-epic-transition-478367.mp3")} loop volume={rumbleVolume} />
 
       {/* Impact BAM on title slam */}
       <Sequence from={30} durationInFrames={durationInFrames - 30} layout="none">
