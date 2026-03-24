@@ -178,10 +178,6 @@ export const TitleCard: React.FC<Props> = ({ title, media }) => {
         <Audio src={staticFile("sfx/dragon-studio-epic-transition-478367.mp3")} volume={rumbleVolume} />
       </Sequence>
 
-      {/* Impact BAM synced to the BAM in the transition audio */}
-      <Sequence from={SLAM_FRAME} durationInFrames={durationInFrames - SLAM_FRAME} layout="none">
-        <Audio src={staticFile("sfx/sfx_impact.mp3")} volume={1.0} />
-      </Sequence>
     </AbsoluteFill>
   );
 };
