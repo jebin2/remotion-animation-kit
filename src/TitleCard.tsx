@@ -31,27 +31,30 @@ export const TitleCard: React.FC<Props> = ({ title, media }) => {
   // ── Rapid montage index ───────────────────────────────────────────────────
   const montageItem = media[Math.floor(frame / FLASH_FRAMES) % media.length];
 
+  // BAM in the transition audio lands at 0.548s → frame 13 at 24fps
+  const SLAM_FRAME = Math.round(0.548 * fps);
+
   // ── Dark overlay fades in over the montage ───────────────────────────────
-  const overlayOpacity = interpolate(frame, [10, 35], [0, 0.82], {
+  const overlayOpacity = interpolate(frame, [5, 20], [0, 0.82], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
   // ── Title slams in with spring burst ─────────────────────────────────────
   const titleSpring = spring({
-    frame: frame - 30,
+    frame: frame - SLAM_FRAME,
     fps,
     config: { damping: 10, stiffness: 180, mass: 0.6 },
     durationInFrames: 20,
   });
   const titleScale = interpolate(titleSpring, [0, 1], [2.2, 1]);
-  const titleOpacity = interpolate(frame, [30, 38], [0, 1], {
+  const titleOpacity = interpolate(frame, [SLAM_FRAME, SLAM_FRAME + 8], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
   // ── Title shake (burst energy) ────────────────────────────────────────────
-  const shakeIntensity = interpolate(frame, [30, 38, 50], [14, 4, 0], {
+  const shakeIntensity = interpolate(frame, [SLAM_FRAME, SLAM_FRAME + 8, SLAM_FRAME + 20], [14, 4, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -59,13 +62,13 @@ export const TitleCard: React.FC<Props> = ({ title, media }) => {
   const shakeY = Math.cos(frame * 3.1) * shakeIntensity;
 
   // ── Accent line grows under title ────────────────────────────────────────
-  const lineWidth = interpolate(frame, [36, 52], [0, 300], {
+  const lineWidth = interpolate(frame, [SLAM_FRAME + 6, SLAM_FRAME + 22], [0, 300], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
   // ── Rumble slowly rises then fades out when title slams ─────────────────
-  const rumbleVolume = interpolate(frame, [0, 25, 32], [2.5, 4.5, 0], {
+  const rumbleVolume = interpolate(frame, [0, SLAM_FRAME - 5, SLAM_FRAME + 2], [2.5, 4.5, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -170,11 +173,13 @@ export const TitleCard: React.FC<Props> = ({ title, media }) => {
         />
       </AbsoluteFill>
 
-      {/* Rumble loop — builds tension during montage, fades out at slam */}
-      <Audio src={staticFile("sfx/dragon-studio-epic-transition-478367.mp3")} loop volume={rumbleVolume} />
+      {/* Transition audio — trimmed to 1.1s (26 frames at 24fps) */}
+      <Sequence from={0} durationInFrames={Math.round(1.1 * fps)} layout="none">
+        <Audio src={staticFile("sfx/dragon-studio-epic-transition-478367.mp3")} volume={rumbleVolume} />
+      </Sequence>
 
-      {/* Impact BAM on title slam */}
-      <Sequence from={30} durationInFrames={durationInFrames - 30} layout="none">
+      {/* Impact BAM synced to the BAM in the transition audio */}
+      <Sequence from={SLAM_FRAME} durationInFrames={durationInFrames - SLAM_FRAME} layout="none">
         <Audio src={staticFile("sfx/sfx_impact.mp3")} volume={1.0} />
       </Sequence>
     </AbsoluteFill>
