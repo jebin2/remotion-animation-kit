@@ -74,10 +74,11 @@ export const TitleCard: React.FC<Props> = ({ title, media }) => {
     extrapolateRight: "clamp",
   });
 
-  // ── Whole card fades out at end ───────────────────────────────────────────
+  // ── Whole card fades out 0.7s after slam ─────────────────────────────────
+  const titleEndFrame = SLAM_FRAME + Math.round(0.7 * fps);
   const cardOpacity = interpolate(
     frame,
-    [durationInFrames - 12, durationInFrames],
+    [titleEndFrame, titleEndFrame + 8],
     [1, 0],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" }
   );
